@@ -1,31 +1,38 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {UserData} from '../types/models';
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
   public userStatusChange: any = new EventEmitter<any>();
   public isLoggedIn = false;
-  constructor() {}
 
-  performLogin(user: string, password: string): UserData {
-    if (user === 'user@test.com' && password === '123456') {
+  firebaseApp = initializeApp({
+    apiKey: "AIzaSyBvSgfydy5-PrEQtAMit7dEYCPyer3mbMI",
+    authDomain: "rosset-b07bc.firebaseapp.com",
+    projectId: "rosset-b07bc",
+  });
+
+  constructor() {
+  }
+
+  performLogin(user: UserData, password: string): UserData {
+    if (user.contrasenna == password) {
       this.isLoggedIn = true;
-      const userData: UserData = {
-        id: 1,
-        nombre: 'user@test.com',
-        tipo: 'Juan',
-        contrasenna: 'Vainas',
-      };
-      this.userStatusChange.emit(userData);
-      return userData;
+      this.userStatusChange.emit(user);
+      return user;
     } else {
       return null;
     }
   }
 
-  performLoginAsync(user: string, password: string): Promise<UserData> {
+  performLoginAsync(user: UserData, password: string): Promise<UserData> {
     const timeout = 100;
     return new Promise((resolve) =>
       setTimeout(() => {
@@ -39,4 +46,18 @@ export class UserService {
     this.isLoggedIn = false;
     this.userStatusChange.emit(null);
   }
+
+  async getUsers()
+  {
+    const db = getFirestore();
+    const querySnapshot = await getDocs(collection(db, "Usuario"));
+    if (querySnapshot!=null)
+    {
+      return querySnapshot;
+    } else
+    {
+      return null;
+    }
+  }
 }
+
