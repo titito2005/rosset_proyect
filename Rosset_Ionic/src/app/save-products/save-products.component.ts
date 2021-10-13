@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
@@ -8,19 +7,17 @@ import {LoadingController, ToastController} from '@ionic/angular';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 
-
 const db = getFirestore();
 @Component({
   selector: 'app-save-products',
-  templateUrl: './save-products.page.html',
-  styleUrls: ['./save-products.page.scss'],
+  templateUrl: './save-products.component.html',
+  styleUrls: ['./save-products.component.scss'],
 })
-export class SaveProductsPage implements OnInit {
+export class SaveProductsComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async onSubmit(form: NgForm) {
     const camisa = form.value.camisa;
@@ -35,11 +32,6 @@ export class SaveProductsPage implements OnInit {
       Detalles:form.value.cuellocam
 
     });
-
-    /*
-    if (!form.valid) {
-      return;
-    }
-    */
   }
+
 }
