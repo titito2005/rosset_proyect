@@ -7,34 +7,36 @@ import {LoadingController, ToastController} from '@ionic/angular';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from 'src/app/services/user.service';
-
-const firebaseApp = initializeApp({
-  apiKey: "AIzaSyBvSgfydy5-PrEQtAMit7dEYCPyer3mbMI",
-  authDomain: "rosset-b07bc.firebaseapp.com",
-  projectId: "rosset-b07bc",
-});
-
-const db = getFirestore();
-
+import { UserData } from 'src/app/types/models';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  users: UserData[] = [];
+  datos: boolean = false;
 
   constructor(
     private userService: UserService,
     private router: Router,
     private toastController: ToastController,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
   ) {}
 
   async ngOnInit() {
-    const querySnapshot = await getDocs(collection(db, "Usuario"));
+    const querySnapshot = await this.userService.getUsers();
+    var contador = 0;
     querySnapshot.forEach((doc) => {
-      console.log(doc.data());
+      let user: UserData = {
+        nombre: doc.get("Nombre"),
+        tipo: doc.get("Tipo"),
+        contrasenna: doc.get("Contraseña"),
+      };
+      this.users[contador]=user;
+      contador++;
     });
+    this.datos = true;
   }
 
   onSubmit(form: NgForm) {
@@ -42,19 +44,9 @@ export class LoginPage implements OnInit {
       return;
     }
 
-    const email = form.value.email;
+    const user = form.value.username;
     const password = form.value.password;
-    console.log(email);
-    console.log(password);
 
-    // const result = this.userService.performLogin(email, password);
-    // if (result) {
-    //   this.router.navigate(['/list']);
-    // } else {
-    //   console.log('Error al hacer login');
-    // }
-
-    // LoadingController => animacion de espera
     this.loadingController
       .create({
         message: 'Por favor espere...'
@@ -63,19 +55,19 @@ export class LoginPage implements OnInit {
         res.present();
 
         this.userService
-          .performLoginAsync(email, password)
+          .performLoginAsync(user, password)
           .then((userData) => {
             this.loadingController.dismiss();
             if (userData) {
               form.reset();
               console.log({userData});
-              this.router.navigate(['/list']);
+              this.router.navigate(['/home']);
             } else {
               // toastController => mensajitos de abajo
               this.toastController
                 .create({
                   header: 'Error',
-                  message: 'Usuario incorrecto',
+                  message: 'Credenciales incorrectos',
                   position: 'bottom',
                   duration: 3000
                 })
