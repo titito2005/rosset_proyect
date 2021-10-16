@@ -5,7 +5,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { doc, getDoc } from "firebase/firestore";
 import {LoadingController, ToastController} from '@ionic/angular';
 import {NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {UserService} from 'src/app/services/user.service';
 import { UserData } from 'src/app/types/models';
 
@@ -16,9 +16,13 @@ import { UserData } from 'src/app/types/models';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  constructor(private router: ActivatedRoute) { }
 
   ngOnInit() {
+  }
+
+  irPedidos() {
+    console.log("Pedidos");
   }
 
 }

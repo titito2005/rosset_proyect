@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PedidoService} from 'src/app/services/pedido.service';
-import {Pedido} from './pedidos.model'
+import {Pedido} from 'src/app/types/models' 
 
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
@@ -21,12 +21,9 @@ export class PedidosPage implements OnInit {
 
   constructor(private pedidosService: PedidoService) { }
 
-  listaPedidos: Array<Pedido> = [];
+  listaPedidos: Pedido[] = [];
 
   async ngOnInit() {
-    let lista = await this.pedidosService.getPedidos();
-    for(let x = 0; x < lista.size; x++){
-      this.listaPedidos.push(lista[x]);
-    }
+    this.listaPedidos = await this.pedidosService.getPedidos();
   }
 }
