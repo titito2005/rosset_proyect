@@ -1,3 +1,6 @@
+import { identifierModuleUrl } from "@angular/compiler";
+import { PedidoService } from "../services/pedido.service";
+
 export interface UserData {
   nombre: string;
   tipo: string;
@@ -5,11 +8,10 @@ export interface UserData {
 }
 
 export interface Pedido {
-  ID: string;
-  Usuario: string;
-  Direccion: string;
-  Estado: string;
-  Fecha: string;
-  Telefono: string;
+  id: string;
+  usuario: string;
+  direccion: string;
+  estado: string;
+  fecha: string;
+  telefono: string;
 }
-
