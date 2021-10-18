@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { GuardarProductoComponent } from './components/guardar-producto/guardar-producto.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,GuardarProductoComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CommonModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

@@ -8,6 +8,8 @@ import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from 'src/app/services/user.service';
 import { UserData } from 'src/app/types/models';
+import {ModalController} from '@ionic/angular';
+import { GuardarProductoComponent } from 'src/app/components/guardar-producto/guardar-producto.component';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +18,22 @@ import { UserData } from 'src/app/types/models';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  constructor( public modalController: ModalController) { }
 
   ngOnInit() {
   }
+  async viewNote() {
+
+    const modal = await this.modalController.create({
+      component: GuardarProductoComponent,
+      /*
+      componentProps: {
+        noteId
+      }
+      */
+    });
+    return await modal.present();
+  }
+
 
 }
