@@ -12,13 +12,40 @@
 <ion-content>
   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
     <ion-item lines="full">
-      <ion-label position="floating">Camisa</ion-label>
-      <ion-checkbox checked="true" ngModel name="camisa"></ion-checkbox>
+      <ion-label position="floating">Nombre Producto</ion-label>
+      <ion-input type="text" ngModel name="nombre"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Cantidad</ion-label>
+      <ion-label position="floating">Numero de Producto</ion-label>
+      <ion-input type="number" ngModel name = "pedido"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Cantidad de Productos</ion-label>
       <ion-input type="number" ngModel name="cantidad"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Detalles del Producto</ion-label>
+      <ion-input type="text"  ngModel name="detalles"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Estampado del Producto</ion-label>
+      <ion-input type="text"ngModel name="estampado"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Posee Camisa</ion-label>
+      <ion-checkbox [(ngModel)]="shirt" name="camisa" ></ion-checkbox>
+    </ion-item>
+
+
+
+    <ion-item lines="full">
+      <ion-label position="floating">Talla Camisa</ion-label>
+      <ion-input type="text" ngModel name = "tallaCam" ></ion-input>
     </ion-item>
 
     <ion-item lines="full">
@@ -26,14 +53,28 @@
       <ion-input type="number" ngModel name="cuellocam"></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Detalles</ion-label>
-      <ion-input type="text"  ngModel name="detalles"></ion-input>
-    </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Estado Camisa</ion-label>
       <ion-input type="number" ngModel name="estadoCam"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Manga Camisa</ion-label>
+      <ion-input type="number" ngModel name="mangaCam"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Posee Pantalon</ion-label>
+      <ion-checkbox [(ngModel)]="pant" name="pantalon" ></ion-checkbox>
+    </ion-item>
+
+
+
+    <ion-item lines="full">
+      <ion-label position="floating">Talla Pantalon</ion-label>
+      <ion-input type="text" ngModel name = "tallaPan"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
@@ -42,48 +83,19 @@
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Estampado</ion-label>
-      <ion-input type="text"ngModel name="estampado"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
       <ion-label position="floating">Largo Pantalon</ion-label>
       <ion-input type="number" ngModel name="largoPant"></ion-input>
     </ion-item>
+
+
     <ion-item lines="full">
-      <ion-label position="floating">Manga Camisa</ion-label>
-      <ion-input type="number"></ion-input>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-label position="floating">Nombre</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label position="floating">Precio del Producto</ion-label>
+      <ion-input type="number" ngModel name = "precio"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Pantalon</ion-label>
-      <ion-checkbox checked="true"></ion-checkbox>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label position="floating">Pedido</ion-label>
-      <ion-input type="number"></ion-input>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-label position="floating">Precio</ion-label>
-      <ion-input type="number"></ion-input>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-label position="floating">Talla Camisa</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-label position="floating">Talla Pantalon</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label position="floating">Tela</ion-label>
-      <ion-input type="number"></ion-input>
+      <ion-label position="floating">Tipo de Tela</ion-label>
+      <ion-input type="number" ngModel name = "tela"></ion-input>
     </ion-item>
 
     <ion-row>

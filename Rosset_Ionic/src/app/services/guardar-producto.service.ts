@@ -20,18 +20,32 @@ export class GuardarProductoService {
 
   constructor() { }
 
-  async onSubmit(form: NgForm) {
+
+
+  async onSubmit(form: NgForm ,shirt: boolean,pant: boolean) {
     const db = getFirestore();
     const camisa = form.value.camisa;
     const cantidad = form.value.cantidad;
-    console.log(cantidad);
+    console.log(shirt);
     console.log(camisa);
 
     const docRef = await addDoc(collection(db, 'Producto'), {
-      Camisa:form.value.camisa,
+      Camisa:shirt,
       Cantidad:form.value.cantidad,
       CuelloCam:form.value.cuellocam,
-      Detalles:form.value.detalles
+      Detalles:form.value.detalles,
+      EstadoCam:form.value.estadoCam,
+      EstadoPant:form.value.estadoPant,
+      Estampado:form.value.estampado,
+      LargoPant:form.value.largoPant,
+      MangaCam:form.value.mangaCam,
+      Nombre:form.value.nombre,
+      Pantalon:pant,
+      Pedido:form.value.pedido,
+      Precio:form.value.precio,
+      TallaCam:form.value.tallaCam,
+      TallaPant:form.value.tallaPan,
+      Tela:form.value.tela
 
     });
 
