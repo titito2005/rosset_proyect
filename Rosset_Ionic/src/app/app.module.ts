@@ -8,6 +8,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GuardarProductoComponent } from './components/guardar-producto/guardar-producto.component';
 
+//Componentes
+import {VerPedidoComponent} from 'src/app/components/ver-pedido/ver-pedido.component';
+
 @NgModule({
   declarations: [AppComponent,GuardarProductoComponent],
   entryComponents: [],
