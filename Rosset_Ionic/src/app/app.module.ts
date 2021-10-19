@@ -12,7 +12,7 @@ import { GuardarProductoComponent } from './components/guardar-producto/guardar-
 import {VerPedidoComponent} from 'src/app/components/ver-pedido/ver-pedido.component';
 
 @NgModule({
-  declarations: [AppComponent,GuardarProductoComponent],
+  declarations: [AppComponent,VerPedidoComponent,GuardarProductoComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CommonModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
