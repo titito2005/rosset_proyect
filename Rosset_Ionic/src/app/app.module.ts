@@ -7,8 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+//Componentes
+import {VerPedidoComponent} from 'src/app/components/ver-pedido/ver-pedido.component';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, VerPedidoComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CommonModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

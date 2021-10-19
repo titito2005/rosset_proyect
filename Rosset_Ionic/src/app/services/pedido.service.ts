@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { doc, getDoc } from "firebase/firestore";
 
-import {UserData} from '../types/models';
+import {Producto, UserData} from '../types/models';
 
-import {Pedido} from 'src/app/types/models' 
+import {Pedido} from 'src/app/types/models'
 
 @Injectable({
   providedIn: 'root'
 })
 export class PedidoService {
-  
+
   firebaseApp = initializeApp({
     apiKey: "AIzaSyBvSgfydy5-PrEQtAMit7dEYCPyer3mbMI",
     authDomain: "rosset-b07bc.firebaseapp.com",
@@ -22,6 +22,7 @@ export class PedidoService {
   constructor() { }
 
   pedidos: Pedido[];
+  productos: Producto[];
 
   async getPedidos(){
     const db = getFirestore();
@@ -41,6 +42,25 @@ export class PedidoService {
         this.pedidos.push(pedido as Pedido)
       });
       return this.pedidos;
+    } else
+    {
+      return null;
+    }
+  }
+
+  async getProductosPorId(id:string){
+    const db = getFirestore();
+    const q = query(collection(db, "Producto"), where("Pedido", "==", id));
+    const querySnapshot = await getDocs(q);
+    /*
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+    });
+    */
+    if (querySnapshot!=null)
+    {
+      return querySnapshot;
     } else
     {
       return null;
