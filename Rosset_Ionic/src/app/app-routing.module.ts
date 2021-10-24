@@ -13,7 +13,11 @@ const routes: Routes = [
   {
     path: 'pedidos',
     loadChildren: () => import('./pages/pedidos/pedidos.module').then( m => m.PedidosPageModule)
+  },  {
+    path: 'produccion',
+    loadChildren: () => import('./pages/produccion/produccion.module').then( m => m.ProduccionPageModule)
   },
+
 
 ];
 

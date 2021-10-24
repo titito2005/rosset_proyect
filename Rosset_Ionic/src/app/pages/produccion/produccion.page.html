@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Produccion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-content *ngIf="datos == true">
+    <ion-card *ngFor="let producto of listaProductos">
+      <ion-card-header>
+        <ion-card-title>Producto:</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>Camisa: </ion-label>
+          </ion-item-divider>
+
+          <ion-item>
+            <ion-label>Camisa: {{producto.camisa}}</ion-label>
+          </ion-item>
+        </ion-item-group>
+
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>Pantalón: </ion-label>
+          </ion-item-divider>
+
+          <ion-item>
+            <ion-label>Pantalón: {{producto.pantalon}}</ion-label>
+          </ion-item>
+        </ion-item-group>
+
+      </ion-card-content>
+    </ion-card>
+</ion-content>

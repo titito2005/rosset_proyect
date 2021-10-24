@@ -48,12 +48,5 @@ export class GuardarProductoService {
       Tela:form.value.tela
 
     });
-
-
-
-
-
   }
-
-
 }
