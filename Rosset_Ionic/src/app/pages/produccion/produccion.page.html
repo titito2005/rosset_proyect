@@ -1,38 +1,62 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Produccion</ion-title>
+    <ion-title>Producción</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content *ngIf="datos == true">
 
-<ion-content>
+  <ion-card button="true">
+    <ion-card-header>
+      <ion-card-title>Corte {{listaCorte.length}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Elementos en proceso de corte.
+    </ion-card-content>
+  </ion-card>
 
-  <ion-content *ngIf="datos == true">
-    <ion-card *ngFor="let producto of listaProductos">
-      <ion-card-header>
-        <ion-card-title>Producto:</ion-card-title>
-      </ion-card-header>
+  <ion-card button="true">
+    <ion-card-header>
+      <ion-card-title>Estampado {{listaEstampado.length}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Elementos en proceso de estampado.
+    </ion-card-content>
+  </ion-card>
 
-      <ion-card-content>
-        <ion-item-group>
-          <ion-item-divider>
-            <ion-label>Camisa: </ion-label>
-          </ion-item-divider>
+  <ion-card button="true">
+    <ion-card-header>
+      <ion-card-title>Planchado {{listaPlanchado.length}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Elementos en proceso de planchado.
+    </ion-card-content>
+  </ion-card>
 
-          <ion-item>
-            <ion-label>Camisa: {{producto.camisa}}</ion-label>
-          </ion-item>
-        </ion-item-group>
+  <ion-card button="true">
+    <ion-card-header>
+      <ion-card-title>Cosido {{listaCosido.length}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Elementos en proceso de cosido.
+    </ion-card-content>
+  </ion-card>
 
-        <ion-item-group>
-          <ion-item-divider>
-            <ion-label>Pantalón: </ion-label>
-          </ion-item-divider>
+  <ion-card button="true">
+    <ion-card-header>
+      <ion-card-title>Empacado {{listaEmpacado.length}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Elementos en proceso de empacado.
+    </ion-card-content>
+  </ion-card>
 
-          <ion-item>
-            <ion-label>Pantalón: {{producto.pantalon}}</ion-label>
-          </ion-item>
-        </ion-item-group>
+  <ion-card button="true">
+    <ion-card-header>
+      <ion-card-title>Entregado {{listaEntregado.length}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Elementos en proceso de entrega.
+    </ion-card-content>
+  </ion-card>
 
-      </ion-card-content>
-    </ion-card>
 </ion-content>
