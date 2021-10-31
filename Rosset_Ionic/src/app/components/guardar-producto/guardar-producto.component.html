@@ -18,12 +18,12 @@
 
     <ion-item lines="full">
       <ion-label position="floating">Numero de Producto</ion-label>
-      <ion-input type="number" ngModel name = "pedido"></ion-input>
+      <ion-input  [(ngModel)]="productNumber" value="{{productNumber}}" disabled= "true" type="number" ngModel name = "pedido"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Cantidad de Productos</ion-label>
-      <ion-input type="number" ngModel name="cantidad"></ion-input>
+      <ion-input type="number" ngModel name="cantidad" ngModelhid></ion-input>
     </ion-item>
 
     <ion-item lines="full">
@@ -44,7 +44,7 @@
 
 
     <ion-item lines="full">
-      <ion-label position="floating">Talla Camisa</ion-label>
+      <ion-label position="floating" >Talla Camisa</ion-label>
       <ion-input type="text" ngModel name = "tallaCam" ></ion-input>
     </ion-item>
 
@@ -56,7 +56,7 @@
 
     <ion-item lines="full">
       <ion-label position="floating">Estado Camisa</ion-label>
-      <ion-input type="number" ngModel name="estadoCam"></ion-input>
+      <ion-input [(ngModel)]="shirtStatus" value="{{shirtStatus}}" name = "estadoCam" type="number"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
@@ -79,7 +79,7 @@
 
     <ion-item lines="full">
       <ion-label position="floating">Estado Pantalon</ion-label>
-      <ion-input type="number"ngModel name="estadoPant"></ion-input>
+      <ion-input [(ngModel)]="pantStatus" value="{{pantStatus}}" type="number"ngModel name="estadoPant"></ion-input>
     </ion-item>
 
     <ion-item lines="full">

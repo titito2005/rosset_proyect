@@ -12,8 +12,11 @@ let pant;
 })
 
 export class GuardarProductoComponent implements OnInit {
-   shirt: boolean;
-   pant: boolean;
+   shirt: boolean = false;
+   pant: boolean = false;
+   shirtStatus: number = 1;
+   pantStatus: number = 1;
+   productNumber : number = 1;
   constructor(private guardarService: GuardarProductoService,private modalController: ModalController) { }
 
 
@@ -26,7 +29,13 @@ export class GuardarProductoComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
-      this.guardarService.onSubmit(form,this.shirt,this.pant);
+      this.guardarService.onSubmit(form,this.shirt,this.pant,this.shirtStatus,this.pantStatus,this.productNumber);
+      form.reset()
+      this.shirt = false;
+      this.pant = false;
+      this.shirtStatus = 1;
+      this.pantStatus = 1;
+      this.productNumber ++;
   }
 
   closeModal() {
