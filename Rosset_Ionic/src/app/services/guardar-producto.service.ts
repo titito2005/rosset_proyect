@@ -22,11 +22,11 @@ export class GuardarProductoService {
 
 
 
-  async onSubmit(form: NgForm ,shirt: boolean,pant: boolean,shirtStatus: number,pantStatus : number,producNumber: number) {
+  async submit(form: NgForm ,shirt: boolean,pant: boolean,shirtStatus: number,pantStatus: number,producNumber: number) {
     const db = getFirestore();
     const camisa = form.value.camisa;
     const cantidad = form.value.cantidad;
-    console.log(shirt);
+
 
 
     const docRef = await addDoc(collection(db, 'Producto'), {

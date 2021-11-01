@@ -45,7 +45,7 @@ export class GuardarProductoComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
-      this.guardarService.onSubmit(form,this.shirt,this.pant,this.shirtStatus,this.pantStatus,this.productNumber);
+      this.guardarService.submit(form,this.shirt,this.pant,this.shirtStatus,this.pantStatus,this.productNumber);
       form.reset()
       this.shirt = false;
       this.pant = false;
