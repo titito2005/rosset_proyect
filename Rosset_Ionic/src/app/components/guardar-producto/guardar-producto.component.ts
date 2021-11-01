@@ -28,16 +28,15 @@ export class GuardarProductoComponent implements OnInit {
   }
 
   show(){
-    console.log("entre a show");
-    if(this.shirt==false){
+    if(this.shirt===false){
       this.showCam=false;
-    }else if (this.shirt==true){
+    }else if (this.shirt===true){
       this.showCam=true;
     }
 
-    if(this.pant==false){
+    if(this.pant===false){
       this.showPant=false;
-    }else if(this.pant==true){
+    }else if(this.pant===true){
       this.showPant=true;
     }
   }
