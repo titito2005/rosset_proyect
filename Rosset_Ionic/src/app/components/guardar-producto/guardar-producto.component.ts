@@ -15,8 +15,8 @@ let pant;
 export class GuardarProductoComponent implements OnInit {
    shirt: boolean = false;
    pant: boolean = false;
-   shirtStatus: number = 1;
-   pantStatus: number = 1;
+   shirtStatus: number = 0;
+   pantStatus: number = 0;
    productNumber : number = 1;
    showCam: boolean = false;
    showPant: boolean = false;
