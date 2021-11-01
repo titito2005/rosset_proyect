@@ -22,7 +22,7 @@ const db = getFirestore();
 export class PedidosPage implements OnInit {
 
   constructor(private pedidosService: PedidoService,
-    public modalController: ModalController,) { }
+    public modalController: ModalController) { }
 
   listaPedidos: Pedido[] = [];
 
