@@ -18,8 +18,8 @@ export class GuardarProductoComponent implements OnInit {
    shirtStatus: number = 0;
    pantStatus: number = 0;
    productNumber : number = 1;
-   showCam: boolean = false;
-   showPant: boolean = false;
+   showCam: boolean = true;
+   showPant: boolean = true;
   constructor(private guardarService: GuardarProductoService,private modalController: ModalController) { }
 
 
@@ -29,15 +29,15 @@ export class GuardarProductoComponent implements OnInit {
 
   show(){
     if(this.shirt===false){
-      this.showCam=false;
-    }else if (this.shirt===true){
       this.showCam=true;
+    }else if (this.shirt===true){
+      this.showCam=false;
     }
 
     if(this.pant===false){
-      this.showPant=false;
-    }else if(this.pant===true){
       this.showPant=true;
+    }else if(this.pant===true){
+      this.showPant=false;
     }
   }
 
@@ -47,6 +47,8 @@ export class GuardarProductoComponent implements OnInit {
 
       this.guardarService.submit(form,this.shirt,this.pant,this.shirtStatus,this.pantStatus,this.productNumber);
       form.reset()
+      this.showCam=true;
+      this.showPant=true;
       this.shirt = false;
       this.pant = false;
       this.shirtStatus = 1;

@@ -30,17 +30,17 @@
       <ion-label>Posee Camisa</ion-label>
       <ion-checkbox [(ngModel)]="shirt" name="camisa" (ionChange) = "show()" ></ion-checkbox>
     </ion-item>
-    <ion-item *ngIf="showCam" lines="full">
+    <ion-item [hidden]="showCam" lines="full">
       <ion-label position="floating" >Talla Camisa</ion-label>
       <ion-input type="text" ngModel name = "tallaCam" ></ion-input>
     </ion-item>
 
-    <ion-item *ngIf="showCam" lines="full">
+    <ion-item [hidden]="showCam" lines="full">
       <ion-label position="floating">Cuello Camisa</ion-label>
       <ion-input type="number" ngModel name="cuellocam"></ion-input>
     </ion-item>
 
-    <ion-item *ngIf="showCam" lines="full">
+    <ion-item [hidden]="showCam" lines="full">
       <ion-label position="floating">Manga Camisa</ion-label>
       <ion-input type="number" ngModel name="mangaCam"></ion-input>
     </ion-item>
@@ -50,13 +50,13 @@
       <ion-checkbox [(ngModel)]="pant" name="pantalon" (ionChange) = "show()" ></ion-checkbox>
     </ion-item>
 
-    <ion-item *ngIf="showPant" lines="full">
+    <ion-item [hidden]="showPant" lines="full">
       <ion-label position="floating">Talla Pantalon</ion-label>
       <ion-input type="text" ngModel name = "tallaPan"></ion-input>
     </ion-item>
 
 
-    <ion-item *ngIf="showPant" lines="full">
+    <ion-item [hidden]="showPant" lines="full">
       <ion-label position="floating">Largo Pantalon</ion-label>
       <ion-input type="number" ngModel name="largoPant"></ion-input>
     </ion-item>
