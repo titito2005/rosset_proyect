@@ -52,12 +52,6 @@ export class PedidoService {
     const db = getFirestore();
     const q = query(collection(db, "Producto"), where("Pedido", "==", id));
     const querySnapshot = await getDocs(q);
-    /*
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-    });
-    */
     if (querySnapshot!=null)
     {
       return querySnapshot;

@@ -12,8 +12,22 @@ const routes: Routes = [
   },
   {
     path: 'pedidos',
-    loadChildren: () => import('./pages/pedidos/pedidos.module').then( m => m.PedidosPageModule)
+    children: [
+      {
+        path: "",
+        loadChildren: () => import('./pages/pedidos/pedidos.module').then( m => m.PedidosPageModule)
+      },
+      {
+        path: ":id",
+        loadChildren: () => import('./pages/guardar-pedido/guardar-pedido.module').then( m => m.GuardarPedidoPageModule)
+      }
+    ]
   },
+  {
+    path: 'guardar-pedido',
+    loadChildren: () => import('./pages/guardar-pedido/guardar-pedido.module').then( m => m.GuardarPedidoPageModule)
+  },
+
 
 ];
 

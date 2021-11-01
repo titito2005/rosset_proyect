@@ -31,12 +31,13 @@ export class PedidosPage implements OnInit {
   }
 
   async verProductos(pedidoId: string) {
-    const modal = await this.modalController.create({
+    /**const modal = await this.modalController.create({
       component: VerPedidoComponent,
       componentProps: {
         pedidoId
       }
     });
     return await modal.present();
+    **/
   }
 }

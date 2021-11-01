@@ -14,6 +14,7 @@ export class VerPedidoComponent implements OnInit {
   @Input() pedidoId: string;
   productos: Producto[] = [];
   datos: boolean = false;
+  edicion: boolean = true;
 
   constructor(
     private modalController: ModalController,
