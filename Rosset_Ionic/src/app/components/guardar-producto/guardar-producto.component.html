@@ -38,28 +38,28 @@
 
     <ion-item>
       <ion-label>Posee Camisa</ion-label>
-      <ion-checkbox [(ngModel)]="shirt" name="camisa" ></ion-checkbox>
+      <ion-checkbox [(ngModel)]="shirt" name="camisa" (ionChange) = "show()" ></ion-checkbox>
     </ion-item>
 
 
 
-    <ion-item lines="full">
+    <ion-item *ngIf="showCam" lines="full">
       <ion-label position="floating" >Talla Camisa</ion-label>
       <ion-input type="text" ngModel name = "tallaCam" ></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
+    <ion-item *ngIf="showCam" lines="full">
       <ion-label position="floating">Cuello Camisa</ion-label>
       <ion-input type="number" ngModel name="cuellocam"></ion-input>
     </ion-item>
 
 
-    <ion-item lines="full">
+    <ion-item *ngIf="showCam" lines="full">
       <ion-label position="floating">Estado Camisa</ion-label>
       <ion-input [(ngModel)]="shirtStatus" value="{{shirtStatus}}" name = "estadoCam" type="number"></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
+    <ion-item *ngIf="showCam" lines="full">
       <ion-label position="floating">Manga Camisa</ion-label>
       <ion-input type="number" ngModel name="mangaCam"></ion-input>
     </ion-item>
@@ -67,22 +67,22 @@
 
     <ion-item>
       <ion-label>Posee Pantalon</ion-label>
-      <ion-checkbox [(ngModel)]="pant" name="pantalon" ></ion-checkbox>
+      <ion-checkbox [(ngModel)]="pant" name="pantalon" (ionChange) = "show()" ></ion-checkbox>
     </ion-item>
 
 
 
-    <ion-item lines="full">
+    <ion-item *ngIf="showPant" lines="full">
       <ion-label position="floating">Talla Pantalon</ion-label>
       <ion-input type="text" ngModel name = "tallaPan"></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
+    <ion-item *ngIf="showPant" lines="full">
       <ion-label position="floating">Estado Pantalon</ion-label>
       <ion-input [(ngModel)]="pantStatus" value="{{pantStatus}}" type="number"ngModel name="estadoPant"></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
+    <ion-item *ngIf="showPant" lines="full">
       <ion-label position="floating">Largo Pantalon</ion-label>
       <ion-input type="number" ngModel name="largoPant"></ion-input>
     </ion-item>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ModalController} from '@ionic/angular';
 import { GuardarProductoService } from 'src/app/services/guardar-producto.service';
+
 let pant;
 
 
@@ -17,6 +18,8 @@ export class GuardarProductoComponent implements OnInit {
    shirtStatus: number = 1;
    pantStatus: number = 1;
    productNumber : number = 1;
+   showCam: boolean = false;
+   showPant: boolean = false;
   constructor(private guardarService: GuardarProductoService,private modalController: ModalController) { }
 
 
@@ -24,6 +27,20 @@ export class GuardarProductoComponent implements OnInit {
 
   }
 
+  show(){
+    console.log("entre a show");
+    if(this.shirt==false){
+      this.showCam=false;
+    }else if (this.shirt==true){
+      this.showCam=true;
+    }
+
+    if(this.pant==false){
+      this.showPant=false;
+    }else if(this.pant==true){
+      this.showPant=true;
+    }
+  }
 
 
 
