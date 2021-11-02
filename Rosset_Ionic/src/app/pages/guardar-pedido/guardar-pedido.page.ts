@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Pedido} from 'src/app/types/models';
 import {PedidoService} from 'src/app/services/pedido.service';
 import { ActivatedRoute } from '@angular/router';
+import {Producto} from 'src/app/types/models';
 
 
 @Component({
@@ -20,6 +21,9 @@ export class GuardarPedidoPage implements OnInit {
   fecha: string = "";
   telefono: string = "";
 
+  productos: Producto[] = [];
+  datos: boolean = false;
+
   constructor(private pedidosService: PedidoService, private activatedRoute: ActivatedRoute) { }
 
 
@@ -33,6 +37,32 @@ export class GuardarPedidoPage implements OnInit {
     this.direccion = this.pedido.direccion;
     this.estado = this.pedido.estado;
     this.fecha = this.pedido.fecha;
+
+    const querySnapshot = await this.pedidosService.getProductosPorId(this.id);
+    var contador = 0;
+    querySnapshot.forEach((doc) => {
+      let producto: Producto = {
+        camisa: doc.get("Camisa"),
+        cantidad: doc.get("Cantidad"),
+        cuelloCam: doc.get("CuelloCam"),
+        detalles: doc.get("Detalles"),
+        estadoCam: doc.get("EstadoCam"),
+        estadoPant: doc.get("EstadoPant"),
+        estampado: doc.get("Estampado"),
+        largoPant: doc.get("LargoPant"),
+        mangaCam: doc.get("MangaCam"),
+        nombre: doc.get("Nombre"),
+        pantalon: doc.get("Pantalon"),
+        pedido: doc.get("Pedido"),
+        precio: doc.get("Precio"),
+        tallaCam: doc.get("TallaCam"),
+        tallaPant: doc.get("TallaPant"),
+        tela: doc.get("Tela"),
+      };
+      this.productos[contador]=producto;
+      contador++;
+    });
+    this.datos = true;
   }
 
 }
