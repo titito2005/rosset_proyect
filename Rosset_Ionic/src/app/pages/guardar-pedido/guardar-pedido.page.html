@@ -1,13 +1,16 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atrás"></ion-back-button>
+    </ion-buttons>
     <ion-title>Pedido</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="create"></ion-icon>
+    <ion-fab-button (click)="viewNote(pedido.id)">
+      <ion-icon name="create" ></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
       <ion-fab-button><ion-icon name="checkmark-circle-outline"></ion-icon></ion-fab-button>

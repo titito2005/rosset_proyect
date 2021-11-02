@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ModalController} from '@ionic/angular';
 import { GuardarProductoService } from 'src/app/services/guardar-producto.service';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-guardar-producto',
   templateUrl: './guardar-producto.component.html',
@@ -9,6 +11,7 @@ import { GuardarProductoService } from 'src/app/services/guardar-producto.servic
 })
 
 export class GuardarProductoComponent implements OnInit {
+  @Input() auxId: string;
    shirt: boolean = false;
    pant: boolean = false;
    shirtStatus: number = 0;
@@ -16,9 +19,16 @@ export class GuardarProductoComponent implements OnInit {
    productNumber : number = 1;
    showCam: boolean = true;
    showPant: boolean = true;
-  constructor(private guardarService: GuardarProductoService,private modalController: ModalController) { }
+   id: string;
+  constructor(private guardarService: GuardarProductoService,private modalController: ModalController,private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    /*
+    this.activatedRoute.paramMap.subscribe(paramMap => {
+      this.id = paramMap.get('id');
+    });
+    */
+    console.log(this.auxId);
   }
 
   show(){
@@ -37,7 +47,7 @@ export class GuardarProductoComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
-      this.guardarService.submit(form,this.shirt,this.pant,this.shirtStatus,this.pantStatus,this.productNumber);
+      this.guardarService.submit(form,this.shirt,this.pant,this.shirtStatus,this.pantStatus,this.auxId);
       form.reset()
       this.showCam=true;
       this.showPant=true;

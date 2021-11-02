@@ -3,6 +3,8 @@ import {Pedido} from 'src/app/types/models';
 import {PedidoService} from 'src/app/services/pedido.service';
 import { ActivatedRoute } from '@angular/router';
 import {Producto} from 'src/app/types/models';
+import { GuardarProductoComponent } from 'src/app/components/guardar-producto/guardar-producto.component';
+import {ModalController} from '@ionic/angular';
 
 
 @Component({
@@ -24,7 +26,7 @@ export class GuardarPedidoPage implements OnInit {
   productos: Producto[] = [];
   datos: boolean = false;
 
-  constructor(private pedidosService: PedidoService, private activatedRoute: ActivatedRoute) { }
+  constructor(private pedidosService: PedidoService, private activatedRoute: ActivatedRoute,public modalController: ModalController) { }
 
 
   async ngOnInit() {
@@ -63,6 +65,17 @@ export class GuardarPedidoPage implements OnInit {
       contador++;
     });
     this.datos = true;
+  }
+
+  async viewNote(auxId: string) {
+    console.log(auxId);
+    const modal = await this.modalController.create({
+      component: GuardarProductoComponent,
+      componentProps: {
+        auxId
+      }
+    });
+    return await modal.present();
   }
 
 }
