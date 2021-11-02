@@ -28,6 +28,11 @@ export class GuardarPedidoPage implements OnInit {
       this.id = paramMap.get('id');
     });
     this.pedido = await this.pedidosService.getPedido(this.id);
+    this.id = this.pedido.id;
+    this.usuario = this.pedido.usuario;
+    this.direccion = this.pedido.direccion;
+    this.estado = this.pedido.estado;
+    this.fecha = this.pedido.fecha;
   }
 
 }
