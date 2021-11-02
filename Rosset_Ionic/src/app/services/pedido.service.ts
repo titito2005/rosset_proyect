@@ -48,16 +48,23 @@ export class PedidoService {
     }
   }
 
-  async getProductosPorId(id:string){
+  async getPedido(id:string){
     const db = getFirestore();
-    const q = query(collection(db, "Producto"), where("Pedido", "==", id));
+    const q = query(collection(db, "Pedido"), where("ID", "==", Number(id)));
     const querySnapshot = await getDocs(q);
-    if (querySnapshot!=null)
-    {
-      return querySnapshot;
-    } else
-    {
-      return null;
-    }
+    let retorno: Pedido;
+    querySnapshot.forEach((doc) => {
+      let pedido: Pedido = {
+        id: doc.get("ID"),
+        usuario: doc.get("Usuario"),
+        direccion: doc.get("Direccion"),
+        estado: doc.get("Estado"),
+        fecha: doc.get("Fecha"),
+        telefono: doc.get("Teledono")
+      }
+      retorno = pedido;
+    });
+    
+    return retorno;
   }
 }

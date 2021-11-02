@@ -23,31 +23,7 @@ export class VerPedidoComponent implements OnInit {
     ) {}
 
     async ngOnInit() {
-      const querySnapshot = await this.pedidoService.getProductosPorId(this.pedidoId);
-      var contador = 0;
-      querySnapshot.forEach((doc) => {
-        let producto: Producto = {
-          camisa: doc.get("Camisa"),
-          cantidad: doc.get("Cantidad"),
-          cuelloCam: doc.get("CuelloCam"),
-          detalles: doc.get("Detalles"),
-          estadoCam: doc.get("EstadoCam"),
-          estadoPant: doc.get("EstadoPant"),
-          estampado: doc.get("Estampado"),
-          largoPant: doc.get("LargoPant"),
-          mangaCam: doc.get("MangaCam"),
-          nombre: doc.get("Nombre"),
-          pantalon: doc.get("Pantalon"),
-          pedido: doc.get("Pedido"),
-          precio: doc.get("Precio"),
-          tallaCam: doc.get("TallaCam"),
-          tallaPant: doc.get("TallaPant"),
-          tela: doc.get("Tela"),
-        };
-        this.productos[contador]=producto;
-        contador++;
-      });
-      this.datos = true;
+      
     }
 
     closeModal() {
