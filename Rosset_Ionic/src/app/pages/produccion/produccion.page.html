@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atrás"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Producción</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="datos == true">
+
+  <ion-card button="true" (click)="verProductosPorEstado(0)">
+    <ion-card-header>
+      <ion-card-title>Corte {{cantCorte}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Elementos en proceso de corte.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card button="true" (click)="verProductosPorEstado(1)">
+    <ion-card-header>
+      <ion-card-title>Estampado {{cantEstampado}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Elementos en proceso de estampado.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card button="true" (click)="verProductosPorEstado(2)">
+    <ion-card-header>
+      <ion-card-title>Planchado {{cantPlanchado}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Elementos en proceso de planchado.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card button="true" (click)="verProductosPorEstado(3)">
+    <ion-card-header>
+      <ion-card-title>Cosido {{cantCosido}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Elementos en proceso de cosido.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card button="true" (click)="verProductosPorEstado(4)">
+    <ion-card-header>
+      <ion-card-title>Empacado {{cantEmpacado}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Elementos en proceso de empacado.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card button="true" (click)="verProductosPorEstado(5)">
+    <ion-card-header>
+      <ion-card-title>Entregado {{cantEntregado}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Elementos en proceso de entrega.
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

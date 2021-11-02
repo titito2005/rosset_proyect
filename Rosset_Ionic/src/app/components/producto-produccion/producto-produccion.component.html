@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf = "tipo == 1">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Producto:</ion-card-subtitle>
+          <ion-card-title>Camisa</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-item>
+            <ion-label> Product Id: {{producto.pedido}} </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-label> Manga: {{producto.mangaCam}} </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-label> Cuello: {{producto.cuelloCam}} </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-label> Talla: {{producto.tallaCam}} </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-label> Tela: {{producto.tela}} </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-label> Descripcion: {{producto.detalles}} </ion-label>
+          </ion-item>
+
+          <ion-button color="success">Proceso exitoso</ion-button>
+          <ion-button color="danger">Proceso erróneo</ion-button>
+        </ion-card-content>
+      </ion-card>
+  </ng-container>
+
+  <ng-container *ngIf = "tipo == 2">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Producto:</ion-card-subtitle>
+        <ion-card-title>Pantalón</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label> Product Id: {{producto.pedido}} </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label> Largo: {{producto.largoPant}} </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label> Talla: {{producto.tallaPant}} </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label> Tela: {{producto.tela}} </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label> Descripcion: {{producto.detalles}} </ion-label>
+        </ion-item>
+
+        <ion-button color="success">Proceso exitoso</ion-button>
+        <ion-button color="danger">Proceso erróneo</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+</ion-content>

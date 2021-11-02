@@ -24,9 +24,15 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'produccion',
+    loadChildren: () => import('./pages/produccion/produccion.module').then( m => m.ProduccionPageModule)
+
+  },
+  {
     path: 'guardar-pedido',
     loadChildren: () => import('./pages/guardar-pedido/guardar-pedido.module').then( m => m.GuardarPedidoPageModule)
   },
+
 
 
 ];
