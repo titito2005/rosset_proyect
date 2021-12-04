@@ -35,3 +35,9 @@ export interface Producto {
   tallaPant: string;
   tela: number;
 }
+export interface Tela {
+  id: number;
+  foto: string;
+  cantidad: number;
+  nombre: string;
+}

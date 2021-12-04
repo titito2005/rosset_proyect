@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atrás"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Agregar nueva tela al inventario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-item>
+      <ion-label position="floating">Nombre de la tela: </ion-label>
+      <ion-input type="text" ngModel name="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Id:</ion-label>
+      <ion-input type="number" ngModel name = "id"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Foto:</ion-label>
+      <ion-input type="text" ngModel name="foto"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Cantidad:</ion-label>
+      <ion-input type="text" ngModel name="cantidad"></ion-input>
+    </ion-item>
+  </form>
+
+  <ion-row>
+    <ion-col>
+      <ion-button type="submit" color="primary" expand="block" [disabled]="!f.valid">
+        Guardar Tela
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

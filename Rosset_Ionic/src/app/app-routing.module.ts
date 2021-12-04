@@ -31,7 +31,15 @@ const routes: Routes = [
   {
     path: 'guardar-pedido',
     loadChildren: () => import('./pages/guardar-pedido/guardar-pedido.module').then( m => m.GuardarPedidoPageModule)
+  },  {
+    path: 'inventario',
+    loadChildren: () => import('./pages/inventario/inventario.module').then( m => m.InventarioPageModule)
   },
+  {
+    path: 'guardar-tela',
+    loadChildren: () => import('./pages/guardar-tela/guardar-tela.module').then( m => m.GuardarTelaPageModule)
+  },
+
 
 
 

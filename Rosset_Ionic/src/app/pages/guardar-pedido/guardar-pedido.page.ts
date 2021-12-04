@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import {Producto} from 'src/app/types/models';
 import { GuardarProductoComponent } from 'src/app/components/guardar-producto/guardar-producto.component';
 import {ModalController} from '@ionic/angular';
+import {NgForm} from '@angular/forms';
 
 
 @Component({
@@ -76,6 +77,10 @@ export class GuardarPedidoPage implements OnInit {
       }
     });
     return await modal.present();
+  }
+
+  onSubmit(form: NgForm){
+
   }
 
 }
