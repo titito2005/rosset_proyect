@@ -16,13 +16,13 @@ export class InventarioService {
     projectId: "rosset-b07bc",
   });
 
-  location = 'uploads/';
   inventario: Tela[];
 
   constructor(
     private angularFireStorage: AngularFireStorage
   ) { }
-
+  location = 'uploads/';
+  link:string;
   async getInventario(){
     const db = getFirestore();
     const querySnapshot = await getDocs(collection(db, "Tela"));
@@ -45,23 +45,23 @@ export class InventarioService {
     }
   }
 
-  async agregarTela(form: NgForm){
+  async agregarTela(form: NgForm, link:string){
     const db = getFirestore();
     const docRef = await addDoc(collection(db, 'Tela'), {
       id: form.value.id,
-      foto: form.value.foto,
+      foto: link,
       nombre: form.value.nombre,
       cantidad: form.value.cantidad,
     });
   }
 
-  async agregarFoto(imageData: any) {
+  agregarFoto(blob: Blob):Promise<string>{
     try {
       const fileName = new Date().getTime() + '.png';
       return new Promise((resolve, reject) => {
         const pictureRef = this.angularFireStorage.ref(this.location + fileName);
         pictureRef
-          .put(imageData)
+          .put(blob)
           .then(function () {
             pictureRef.getDownloadURL().subscribe((url: any) => {
               resolve(url);
@@ -74,4 +74,3 @@ export class InventarioService {
     } catch (e) {}
   }
 }
-

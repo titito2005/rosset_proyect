@@ -13,29 +13,19 @@
       pullingIcon="chevron-down-circle-outline"
       pullingText="Pull to refresh"
       refreshingSpinner="circles"
-      refreshingText="Refreshing...">
+      refreshingText="Recargando...">
     </ion-refresher-content>
   </ion-refresher>
   <ion-button [routerLink]="['/guardar-tela']">Agregar nueva tela</ion-button >
-    <ion-list>
-      <ion-item *ngFor="let tela of listaInventario">
-        <ion-grid>
-          <ion-row>
+    <ion-item *ngFor="let tela of listaInventario">
+        <ion-card style="width: 100%;">
+          <ion-card-content>
             <ion-col>
-              <ion-label>{{tela.id}}</ion-label>
+              <p style="font-size: 30px;">Tela: {{tela.nombre}}</p>
+              <p style="font-size: 20px;">Cantidad: {{tela.cantidad}} metros</p>
+              <ion-img class="images" [src]="tela.foto"></ion-img>
             </ion-col>
-            <ion-col>
-              <ion-label>{{tela.foto}}</ion-label>
-            </ion-col>
-          </ion-row><ion-row>
-            <ion-col>
-              <ion-label>{{tela.nombre}}</ion-label>
-            </ion-col>
-            <ion-col>
-              <ion-label>{{tela.cantidad}}</ion-label>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-    </ion-list>
+          </ion-card-content>
+        </ion-card>
+    </ion-item>
 </ion-content>
