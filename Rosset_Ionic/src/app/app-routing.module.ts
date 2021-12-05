@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'guardar-tela',
     loadChildren: () => import('./pages/guardar-tela/guardar-tela.module').then( m => m.GuardarTelaPageModule)
   },
+  {
+    path: 'estadisticas',
+    loadChildren: () => import('./pages/estadisticas/estadisticas.module').then( m => m.EstadisticasPageModule)
+  },
 
 
 
