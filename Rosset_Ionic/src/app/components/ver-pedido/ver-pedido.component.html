@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content *ngIf="datos == true">
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed" [show]="edicion">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed edicion">
       <ion-fab-button>
         <ion-icon name="save"></ion-icon>
       </ion-fab-button>
@@ -20,7 +20,7 @@
       </ion-fab-list>
     </ion-fab>
 
-    <ion-fab  *ngIf="edicion" vertical="bottom" horizontal="end" slot="fixed" [show]="!edicion">
+    <ion-fab  *ngIf="edicion" vertical="bottom" horizontal="end" slot="fixed !edicion">
       <ion-fab-button>
         <ion-icon name="create"></ion-icon>
       </ion-fab-button>

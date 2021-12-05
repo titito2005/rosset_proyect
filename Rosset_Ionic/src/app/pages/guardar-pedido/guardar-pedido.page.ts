@@ -23,6 +23,7 @@ export class GuardarPedidoPage implements OnInit {
   estado: string = "";
   fecha: string = "";
   telefono: string = "";
+  esNuevo: boolean = false;
 
   productos: Producto[] = [];
   datos: boolean = false;
@@ -35,6 +36,7 @@ export class GuardarPedidoPage implements OnInit {
       this.id = paramMap.get('id');
     });
     if (this.id != null){
+      this.esNuevo = false;
       this.pedido = await this.pedidosService.getPedido(this.id);
       this.id = this.pedido.id;
       this.usuario = this.pedido.usuario;
@@ -69,6 +71,7 @@ export class GuardarPedidoPage implements OnInit {
     this.datos = true;
     } else {
       this.id = ""+(await this.pedidosService.getCantidadPedidos() + 1);
+      this.esNuevo = true;
     }
   }
 

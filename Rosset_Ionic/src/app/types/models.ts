@@ -16,6 +16,7 @@ export interface Pedido {
   fecha: string;
   telefono: string;
   productos: string;
+  vendedor: string;
 }
 
 export interface Producto {
@@ -35,4 +36,10 @@ export interface Producto {
   tallaCam: string;
   tallaPant: string;
   tela: number;
+}
+export interface Tela {
+  id: number;
+  foto: string;
+  cantidad: number;
+  nombre: string;
 }

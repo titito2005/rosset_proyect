@@ -38,7 +38,8 @@ export class PedidoService {
           fecha: doc.get("Fecha"),
           estado: doc.get("Estado"),
           telefono: doc.get("Telefono"),
-          productos: doc.get("Productos")
+          productos: doc.get("Productos"),
+          vendedor: doc.get("Vendedor")
         };
         this.pedidos.push(pedido as Pedido)
       });
@@ -62,7 +63,8 @@ export class PedidoService {
         estado: doc.get("Estado"),
         fecha: doc.get("Fecha"),
         telefono: doc.get("Teledono"),
-        productos: doc.get("Productos")
+        productos: doc.get("Productos"),
+        vendedor: doc.get("Vendedor")
       }
       retorno = pedido;
     });
@@ -107,5 +109,16 @@ export class PedidoService {
     {
       return null;
     }
+  }
+
+  async eliminarProductos(id:string){
+    const db = getFirestore();
+    var pedidos = db.collection('Producto').where('Vendedor','==',id);
+      pedidos.get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          doc.ref.delete();
+        });
+      }
+    );
   }
 }

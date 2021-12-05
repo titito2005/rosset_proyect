@@ -4,6 +4,8 @@ import {Pedido} from 'src/app/types/models';
 import {PedidoService} from 'src/app/services/pedido.service';
 import {Producto} from 'src/app/types/models';
 import {Platform} from '@ionic/angular';
+import {NgForm} from '@angular/forms';
+
 @Component({
   selector: 'app-ver-pedido',
   templateUrl: './ver-pedido.component.html',
@@ -23,10 +25,14 @@ export class VerPedidoComponent implements OnInit {
     ) {}
 
     async ngOnInit() {
-      
+
     }
 
     closeModal() {
       this.modalController.dismiss();
+    }
+
+    onSubmit(form: NgForm){
+
     }
 }
