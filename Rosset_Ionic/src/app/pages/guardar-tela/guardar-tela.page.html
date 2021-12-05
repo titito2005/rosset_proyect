@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button text="Atrás"></ion-back-button>
     </ion-buttons>
-    <ion-title>Agregar nueva tela al inventario</ion-title>
+    <ion-title>Agregar nueva tela</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -28,13 +28,24 @@
       <ion-label position="floating">Cantidad:</ion-label>
       <ion-input type="text" ngModel name="cantidad"></ion-input>
     </ion-item>
-  </form>
 
-  <ion-row>
-    <ion-col>
-      <ion-button type="submit" color="primary" expand="block" [disabled]="!f.valid">
-        Guardar Tela
-      </ion-button>
-    </ion-col>
-  </ion-row>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="onPickImage()" expand="block">
+            <ion-icon name="camera"></ion-icon>
+          </ion-button>
+          <ion-img *ngIf= photo [src]="photo"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" expand="block" [disabled]="!f.valid">
+          Guardar Tela
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

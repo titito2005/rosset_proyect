@@ -41,3 +41,7 @@ export interface Tela {
   cantidad: number;
   nombre: string;
 }
+export interface Photo {
+  filepath: string;
+  webviewPath: string;
+}

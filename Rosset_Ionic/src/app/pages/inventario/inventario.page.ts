@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {InventarioService} from 'src/app/services/inventario.service';
 import {Tela} from 'src/app/types/models'
-
 @Component({
   selector: 'app-inventario',
   templateUrl: './inventario.page.html',
@@ -14,5 +13,12 @@ export class InventarioPage implements OnInit {
 
   async ngOnInit() {
     this.listaInventario = await this.inventarioService.getInventario();
+  }
+
+  doRefresh(event) {
+    setTimeout(() => {
+      this.ngOnInit()
+      event.target.complete();
+    }, 3000);
   }
 }

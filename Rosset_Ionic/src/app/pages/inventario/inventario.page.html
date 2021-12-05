@@ -6,30 +6,36 @@
     <ion-title>Inventario</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <div>
-    <ion-fab-button [routerLink]="['/guardar-tela']">Agregar nueva tela</ion-fab-button >
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-button [routerLink]="['/guardar-tela']">Agregar nueva tela</ion-button >
     <ion-list>
       <ion-item *ngFor="let tela of listaInventario">
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-label class="ion-text-left">{{tela.id}}</ion-label>
+              <ion-label>{{tela.id}}</ion-label>
             </ion-col>
             <ion-col>
-              <ion-label position="stacked" class="ion-text-right">{{tela.foto}}</ion-label>
+              <ion-label>{{tela.foto}}</ion-label>
             </ion-col>
           </ion-row><ion-row>
             <ion-col>
-              <ion-label class="ion-text-left">{{tela.nombre}}</ion-label>
+              <ion-label>{{tela.nombre}}</ion-label>
             </ion-col>
             <ion-col>
-              <ion-label class="ion-text-right">{{tela.cantidad}}</ion-label>
+              <ion-label>{{tela.cantidad}}</ion-label>
             </ion-col>
           </ion-row>
-       </ion-grid>
+        </ion-grid>
       </ion-item>
     </ion-list>
-  </div>
 </ion-content>
