@@ -1,36 +1,49 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="closeModal()">
+      <ion-button (click)="closeModal_NotSafe()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-fab vertical="bottom" horizontal="start" slot="fixed">
-  <ion-fab-button >
-    <ion-icon name="checkmark-circle-outline" ></ion-icon>
-  </ion-fab-button>
-  <ion-fab-list side="top">
-    <ion-fab-button><ion-icon name="checkmark-circle-outline"></ion-icon></ion-fab-button>
-    <ion-fab-button><ion-icon name="trash"></ion-icon></ion-fab-button>
-  </ion-fab-list>
-</ion-fab>
-
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Inventario</ion-card-subtitle>
-      <ion-card-title> Tela: {{tela.nombre}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-item style="margin-top: 5px;">
+      <ion-label>Nombre de la tela: </ion-label>
+      <ion-input type="text" [(ngModel)]="tela.nombre" ngModel name="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label>Cantidad:</ion-label>
+      <ion-input type="text"  [(ngModel)]="tela.cantidad" ngModel name="cantidad"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-col>
+        <ion-row>
+          <ion-label>Foto:</ion-label>
+          <ion-button class="ion-margin-start" (click)="onPickImage()" expand="block" fill="outline">
+            <ion-icon name="camera"></ion-icon>
+            <ion-label>Agregar foto</ion-label>
+          </ion-button>
+        </ion-row>
         <ion-img [src]="tela.foto"></ion-img>
-      </ion-item>
-      <ion-item>
-        <ion-label> Cantidad: {{tela.cantidad}} metros</ion-label>
-      </ion-item>
-    </ion-card-content>
-</ion-card>
+      </ion-col>
+    </ion-item>
+
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button >
+        <ion-icon name="checkmark-circle-outline" ></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="top">
+        <ion-fab-button (click)="onSubmit(f)">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)= "deleteTela(tela)"><ion-icon name="trash"></ion-icon></ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+  </form>
+</ion-content>
 

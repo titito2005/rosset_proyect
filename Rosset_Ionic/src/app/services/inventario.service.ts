@@ -5,7 +5,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { doc, getDoc, addDoc } from "firebase/firestore";
+import { doc, getDoc, addDoc, setDoc, writeBatch, updateDoc, deleteDoc } from "firebase/firestore";
 @Injectable({
   providedIn: 'root'
 })
@@ -47,12 +47,35 @@ export class InventarioService {
 
   async agregarTela(form: NgForm, link:string){
     const db = getFirestore();
+    /*
     const docRef = await addDoc(collection(db, 'Tela'), {
-      id: form.value.id,
+      id: new Date().getTime(),
       foto: link,
       nombre: form.value.nombre,
       cantidad: form.value.cantidad,
     });
+    */
+    const id = new Date().getTime().toString();
+    await setDoc(doc(db, "Tela", id),{
+      id: id,
+      foto: link,
+      nombre: form.value.nombre,
+      cantidad: form.value.cantidad,
+    });
+  }
+
+  async updateTela(tela: Tela){
+    const db = getFirestore();
+    await updateDoc(doc(db, "Tela", tela.id.toString()),{
+      foto: tela.foto,
+      nombre: tela.nombre,
+      cantidad: tela.cantidad,
+    })
+  }
+
+  async deleteTela(tela: Tela){
+    const db = getFirestore();
+    await deleteDoc(doc(db, "Tela", tela.id.toString()));
   }
 
   agregarFoto(blob: Blob):Promise<string>{
