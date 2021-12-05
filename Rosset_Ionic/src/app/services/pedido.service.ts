@@ -37,7 +37,9 @@ export class PedidoService {
           direccion: doc.get("Direccion"),
           fecha: doc.get("Fecha"),
           estado: doc.get("Estado"),
-          telefono: doc.get("Telefono")
+          telefono: doc.get("Telefono"),
+          vendedor: doc.get("Vendedor")
+
         };
         this.pedidos.push(pedido as Pedido)
       });
@@ -60,12 +62,38 @@ export class PedidoService {
         direccion: doc.get("Direccion"),
         estado: doc.get("Estado"),
         fecha: doc.get("Fecha"),
-        telefono: doc.get("Teledono")
+        telefono: doc.get("Teledono"),
+        vendedor: doc.get("Vendedor")
       }
       retorno = pedido;
     });
 
     return retorno;
+  }
+
+  async getPedidoVendedor(){
+    const db = getFirestore();
+    const querySnapshot = await getDocs(collection(db, "Pedido"));
+    this.pedidos = [];
+    if (querySnapshot!=null)
+    {
+      querySnapshot.forEach((doc) => {
+        let pedido: Pedido = {
+          id: doc.get("ID"),
+          usuario: doc.get("Usuario"),
+          direccion: doc.get("Direccion"),
+          fecha: doc.get("Fecha"),
+          estado: doc.get("Estado"),
+          telefono: doc.get("Telefono"),
+          vendedor: doc.get("Vendedor")
+        };
+        this.pedidos.push(pedido as Pedido);
+      });
+      return this.pedidos;
+    } else
+    {
+      return null;
+    }
   }
 
   async getProductosPorId(id:string){
