@@ -18,7 +18,7 @@
   </ion-refresher>
   <ion-button [routerLink]="['/guardar-tela']">Agregar nueva tela</ion-button >
     <ion-item *ngFor="let tela of listaInventario">
-        <ion-card style="width: 100%;">
+        <ion-card style="width: 100%;" (click)="viewTela(tela)">
           <ion-card-content>
             <ion-col>
               <p style="font-size: 30px;">Tela: {{tela.nombre}}</p>

@@ -16,9 +16,10 @@ import { VerPedidoComponent } from 'src/app/components/ver-pedido/ver-pedido.com
 import { ProductoProduccionComponent } from './components/producto-produccion/producto-produccion.component';
 import { GuardarProductoComponent } from './components/guardar-producto/guardar-producto.component';
 import { ListaProduccionComponent } from './components/lista-produccion/lista-produccion.component';
+import { VerInventarioComponent } from 'src/app/components/ver-inventario/ver-inventario.component';
 
 @NgModule({
-  declarations: [AppComponent,VerPedidoComponent,GuardarProductoComponent, ListaProduccionComponent, ProductoProduccionComponent],
+  declarations: [AppComponent,VerPedidoComponent,GuardarProductoComponent, ListaProduccionComponent, ProductoProduccionComponent, VerInventarioComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
