@@ -42,3 +42,9 @@ export interface Tela {
   cantidad: number;
   nombre: string;
 }
+
+export interface Vendedor{
+  nombre: string;
+  cantidadPedidos: number;
+  pedidosEntregado: number;
+}

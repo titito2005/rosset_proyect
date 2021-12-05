@@ -4,16 +4,9 @@ import {PedidoService} from 'src/app/services/pedido.service';
 import { UserData } from 'src/app/types/models';
 import {UserService} from 'src/app/services/user.service';
 import {Producto} from 'src/app/types/models';
-interface Vendedor{
-  nombre: string;
-  cantidadPedidos: number;
-  pedidosEntregado: number;
-}
+import {Vendedor} from 'src/app/types/models';
 
-interface PrecioPedidos{
-  id: string;
-  precioPedido: number;
-}
+
 @Component({
   selector: 'app-estadisticas',
   templateUrl: './estadisticas.page.html',
