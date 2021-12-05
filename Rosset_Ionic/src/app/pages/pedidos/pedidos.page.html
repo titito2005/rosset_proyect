@@ -9,7 +9,7 @@
 
 <ion-content>
   <div>
-    <ion-button size="small">Agregar pedido</ion-button>
+    <ion-button size="small" [routerLink]="['/guardar-pedido']">Agregar pedido</ion-button>
   </div>
   <div>
     <ion-list>
@@ -21,6 +21,7 @@
             </ion-col>
             <ion-col>
               <ion-label position="stacked" class="ion-text-right">{{pedido.estado}}</ion-label>
+              <ion-label position="stacked" class="ion-text-right">{{pedido.productos}}</ion-label>
             </ion-col>
           </ion-row><ion-row>
             <ion-col>

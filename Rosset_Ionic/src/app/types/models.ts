@@ -15,6 +15,7 @@ export interface Pedido {
   estado: string;
   fecha: string;
   telefono: string;
+  productos: string;
 }
 
 export interface Producto {

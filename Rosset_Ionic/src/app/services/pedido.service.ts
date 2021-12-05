@@ -37,7 +37,8 @@ export class PedidoService {
           direccion: doc.get("Direccion"),
           fecha: doc.get("Fecha"),
           estado: doc.get("Estado"),
-          telefono: doc.get("Telefono")
+          telefono: doc.get("Telefono"),
+          productos: doc.get("Productos")
         };
         this.pedidos.push(pedido as Pedido)
       });
@@ -60,7 +61,8 @@ export class PedidoService {
         direccion: doc.get("Direccion"),
         estado: doc.get("Estado"),
         fecha: doc.get("Fecha"),
-        telefono: doc.get("Teledono")
+        telefono: doc.get("Teledono"),
+        productos: doc.get("Productos")
       }
       retorno = pedido;
     });
@@ -72,15 +74,35 @@ export class PedidoService {
     const db = getFirestore();
     const q = query(collection(db, "Producto"), where("Pedido", "==", id));
     const querySnapshot = await getDocs(q);
-    /*
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-    });
-    */
     if (querySnapshot!=null)
     {
       return querySnapshot;
+    } else
+    {
+      return null;
+    }
+  }
+
+  async getCantidadProductos(id:string){
+    const db = getFirestore();
+    const q = query(collection(db, "Producto"), where("Pedido", "==", id));
+    const querySnapshot = await getDocs(q);
+    if (querySnapshot!=null)
+    {
+      return querySnapshot.size;
+    } else
+    {
+      return null;
+    }
+  }
+
+  async getCantidadPedidos(){
+    const db = getFirestore();
+    const q = query(collection(db, "Pedido"));
+    const querySnapshot = await getDocs(q);
+    if (querySnapshot!=null)
+    {
+      return querySnapshot.size;
     } else
     {
       return null;
