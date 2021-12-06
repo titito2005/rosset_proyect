@@ -8,14 +8,14 @@
 </ion-header>
 
 <ion-content>
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" style="margin-top: 10%;">
     <ion-item lines="full">
       <ion-label position="floating">Nombre de la tela: </ion-label>
       <ion-input type="text" ngModel name="nombre"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Cantidad:</ion-label>
+      <ion-label position="floating">Cantidad en metros:</ion-label>
       <ion-input type="text" ngModel name="cantidad"></ion-input>
     </ion-item>
 
@@ -31,9 +31,10 @@
         <ion-img [src]="link"></ion-img>
       </ion-col>
     </ion-item>
-
-    <ion-button class="ion-margin-top" type="submit" color="primary" expand="block" [disabled]="!f.valid">
-      Guardar Tela
-    </ion-button>
+    <div class="center">
+      <ion-button type="submit" color="primary" [disabled]="!f.valid">
+        Guardar
+      </ion-button>
+    </div>
   </form>
 </ion-content>

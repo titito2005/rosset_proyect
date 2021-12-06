@@ -9,14 +9,14 @@
 </ion-header>
 
 <ion-content>
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" style="margin-top: 10%;">
     <ion-item style="margin-top: 5px;">
       <ion-label>Nombre de la tela: </ion-label>
       <ion-input type="text" [(ngModel)]="tela.nombre" ngModel name="nombre"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label>Cantidad:</ion-label>
+      <ion-label>Cantidad en metros:</ion-label>
       <ion-input type="text"  [(ngModel)]="tela.cantidad" ngModel name="cantidad"></ion-input>
     </ion-item>
 
