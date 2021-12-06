@@ -15,8 +15,7 @@ export class EstadisticasPage implements OnInit {
   listaPedidos: Pedido[] = [];
 
   async ngOnInit() {
-    this.listaPedidos = await this.pedidosService.getPedidoVendedor();
-    console.log(this.listaPedidos[0].vendedor);
+    
   }
 
 

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, getDocs, query, where, deleteDoc, addDoc } from "firebase/firestore";
+import { writeBatch, doc, getDoc } from "firebase/firestore";
+import 'firebase/firestore';
 
 import {Producto, UserData} from '../types/models';
 
@@ -113,12 +114,31 @@ export class PedidoService {
 
   async eliminarProductos(id:string){
     const db = getFirestore();
-    var pedidos = db.collection('Producto').where('Vendedor','==',id);
-      pedidos.get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          doc.ref.delete();
-        });
-      }
-    );
+    const q = query(collection(db, "Pedido"), where("id", "==", id));
+    const querySnapshot = await getDocs(q);
+    let idAuto;
+    querySnapshot.forEach((doc) => {
+      idAuto = ${doc.id} => ${doc. data()};
+    });
+
+    await deleteDoc(doc(db, "Pedido", idAuto));
+  }
+
+  async actualizarPedido(pedido: Pedido){
+
+  }
+
+  async guardarPedido(pedido: Pedido){
+    const db = getFirestore();
+    const docRef = await addDoc(collection(db, 'Pedido'), {
+      Id: pedido.id,
+      Direccion: pedido.direccion,
+      Estado: pedido.estado,
+      Fecha: pedido.fecha,
+      Productos: pedido.productos,
+      Telefono: pedido.telefono,
+      Usuario: pedido.usuario,
+      Vendedor: pedido.vendedor
+    });
   }
 }

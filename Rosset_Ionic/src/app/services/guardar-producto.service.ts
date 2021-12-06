@@ -47,7 +47,6 @@ export class GuardarProductoService {
       TallaCam:form.value.tallaCam,
       TallaPant:form.value.tallaPan,
       Tela:form.value.tela
-
     });
   }
 }

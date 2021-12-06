@@ -38,7 +38,6 @@ export class GuardarPedidoPage implements OnInit {
     if (this.id != null){
       this.esNuevo = false;
       this.pedido = await this.pedidosService.getPedido(this.id);
-      this.id = this.pedido.id;
       this.usuario = this.pedido.usuario;
       this.direccion = this.pedido.direccion;
       this.estado = this.pedido.estado;
@@ -70,7 +69,7 @@ export class GuardarPedidoPage implements OnInit {
     });
     this.datos = true;
     } else {
-      this.id = ""+(await this.pedidosService.getCantidadPedidos() + 1);
+      this.id = (new Date().getTime())+"";
       this.esNuevo = true;
     }
   }
@@ -93,6 +92,7 @@ export class GuardarPedidoPage implements OnInit {
 
   async eliminarPedido(){
     console.log("Eliminado");
+    //this.pedidosService.eliminarProductos(this.id);
     this.router.navigate(['/pedidos']);
   }
 }
