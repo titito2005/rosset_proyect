@@ -118,7 +118,7 @@ export class PedidoService {
     const querySnapshot = await getDocs(q);
     let idAuto;
     querySnapshot.forEach((doc) => {
-      idAuto = ${doc.id} => ${doc. data()};
+      //idAuto = ${doc.id} => ${doc. data()};
     });
 
     await deleteDoc(doc(db, "Pedido", idAuto));
