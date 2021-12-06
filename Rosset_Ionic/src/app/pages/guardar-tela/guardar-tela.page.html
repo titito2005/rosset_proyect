@@ -3,38 +3,38 @@
     <ion-buttons slot="start">
       <ion-back-button text="Atrás"></ion-back-button>
     </ion-buttons>
-    <ion-title>Agregar nueva tela al inventario</ion-title>
+    <ion-title>Agregar nueva tela</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <ion-item>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" style="margin-top: 10%;">
+    <ion-item lines="full">
       <ion-label position="floating">Nombre de la tela: </ion-label>
       <ion-input type="text" ngModel name="nombre"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Id:</ion-label>
-      <ion-input type="number" ngModel name = "id"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label position="floating">Foto:</ion-label>
-      <ion-input type="text" ngModel name="foto"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label position="floating">Cantidad:</ion-label>
+      <ion-label position="floating">Cantidad en metros:</ion-label>
       <ion-input type="text" ngModel name="cantidad"></ion-input>
     </ion-item>
-  </form>
 
-  <ion-row>
-    <ion-col>
-      <ion-button type="submit" color="primary" expand="block" [disabled]="!f.valid">
-        Guardar Tela
+    <ion-item lines="full">
+      <ion-col>
+        <ion-row>
+          <ion-label>Foto:</ion-label>
+          <ion-button class="ion-margin-start" (click)="onPickImage()" expand="block" fill="outline">
+            <ion-icon name="camera"></ion-icon>
+            <ion-label>Agregar foto</ion-label>
+          </ion-button>
+        </ion-row>
+        <ion-img [src]="link"></ion-img>
+      </ion-col>
+    </ion-item>
+    <div class="center">
+      <ion-button type="submit" color="primary" [disabled]="!f.valid">
+        Guardar
       </ion-button>
-    </ion-col>
-  </ion-row>
+    </div>
+  </form>
 </ion-content>

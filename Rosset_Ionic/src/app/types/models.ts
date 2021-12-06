@@ -15,6 +15,7 @@ export interface Pedido {
   estado: string;
   fecha: string;
   telefono: string;
+  productos: string;
   vendedor: string;
 }
 
@@ -47,4 +48,8 @@ export interface Vendedor{
   nombre: string;
   cantidadPedidos: number;
   pedidosEntregado: number;
+}
+export interface Photo {
+  filepath: string;
+  webviewPath: string;
 }

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, getDocs, query, where, deleteDoc, addDoc } from "firebase/firestore";
+import { writeBatch, doc, getDoc } from "firebase/firestore";
+import 'firebase/firestore';
 
 import {Producto, UserData} from '../types/models';
 
@@ -38,8 +39,8 @@ export class PedidoService {
           fecha: doc.get("Fecha"),
           estado: doc.get("Estado"),
           telefono: doc.get("Telefono"),
+          productos: doc.get("Productos"),
           vendedor: doc.get("Vendedor")
-
         };
         this.pedidos.push(pedido as Pedido)
       });
@@ -63,6 +64,7 @@ export class PedidoService {
         estado: doc.get("Estado"),
         fecha: doc.get("Fecha"),
         telefono: doc.get("Teledono"),
+        productos: doc.get("Productos"),
         vendedor: doc.get("Vendedor")
       }
       retorno = pedido;
@@ -71,17 +73,10 @@ export class PedidoService {
     return retorno;
   }
 
-
   async getProductosPorId(id:string){
     const db = getFirestore();
     const q = query(collection(db, "Producto"), where("Pedido", "==", id));
     const querySnapshot = await getDocs(q);
-    /*
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-    });
-    */
     if (querySnapshot!=null)
     {
       return querySnapshot;
@@ -89,5 +84,61 @@ export class PedidoService {
     {
       return null;
     }
+  }
+
+  async getCantidadProductos(id:string){
+    const db = getFirestore();
+    const q = query(collection(db, "Producto"), where("Pedido", "==", id));
+    const querySnapshot = await getDocs(q);
+    if (querySnapshot!=null)
+    {
+      return querySnapshot.size;
+    } else
+    {
+      return null;
+    }
+  }
+
+  async getCantidadPedidos(){
+    const db = getFirestore();
+    const q = query(collection(db, "Pedido"));
+    const querySnapshot = await getDocs(q);
+    if (querySnapshot!=null)
+    {
+      return querySnapshot.size;
+    } else
+    {
+      return null;
+    }
+  }
+
+  async eliminarProductos(id:string){
+    const db = getFirestore();
+    const q = query(collection(db, "Pedido"), where("id", "==", id));
+    const querySnapshot = await getDocs(q);
+    let idAuto;
+    querySnapshot.forEach((doc) => {
+      //idAuto = ${doc.id} => ${doc. data()};
+    });
+
+    await deleteDoc(doc(db, "Pedido", idAuto));
+  }
+
+  async actualizarPedido(pedido: Pedido){
+
+  }
+
+  async guardarPedido(pedido: Pedido){
+    const db = getFirestore();
+    const docRef = await addDoc(collection(db, 'Pedido'), {
+      Id: pedido.id,
+      Direccion: pedido.direccion,
+      Estado: pedido.estado,
+      Fecha: pedido.fecha,
+      Productos: pedido.productos,
+      Telefono: pedido.telefono,
+      Usuario: pedido.usuario,
+      Vendedor: pedido.vendedor
+    });
   }
 }

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Pedido} from 'src/app/types/models';
 import {PedidoService} from 'src/app/services/pedido.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import {Producto} from 'src/app/types/models';
 import { GuardarProductoComponent } from 'src/app/components/guardar-producto/guardar-producto.component';
 import {ModalController} from '@ionic/angular';
-import {NgForm} from '@angular/forms';
 
 
 @Component({
@@ -17,32 +17,34 @@ import {NgForm} from '@angular/forms';
 export class GuardarPedidoPage implements OnInit {
 
   pedido: Pedido;
-  id: string = "5";
+  id: string = "";
   usuario: string = "";
   direccion: string = "";
   estado: string = "";
   fecha: string = "";
   telefono: string = "";
+  esNuevo: boolean = false;
 
   productos: Producto[] = [];
   datos: boolean = false;
 
-  constructor(private pedidosService: PedidoService, private activatedRoute: ActivatedRoute,public modalController: ModalController) { }
+  constructor(private pedidosService: PedidoService, private router:Router, private activatedRoute: ActivatedRoute,public modalController: ModalController) { }
 
 
   async ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       this.id = paramMap.get('id');
     });
-    this.pedido = await this.pedidosService.getPedido(this.id);
-    this.id = this.pedido.id;
-    this.usuario = this.pedido.usuario;
-    this.direccion = this.pedido.direccion;
-    this.estado = this.pedido.estado;
-    this.fecha = this.pedido.fecha;
+    if (this.id != null){
+      this.esNuevo = false;
+      this.pedido = await this.pedidosService.getPedido(this.id);
+      this.usuario = this.pedido.usuario;
+      this.direccion = this.pedido.direccion;
+      this.estado = this.pedido.estado;
+      this.fecha = this.pedido.fecha;
 
-    const querySnapshot = await this.pedidosService.getProductosPorId(this.id);
-    var contador = 0;
+      const querySnapshot = await this.pedidosService.getProductosPorId(this.id);
+      var contador = 0;
     querySnapshot.forEach((doc) => {
       let producto: Producto = {
         camisa: doc.get("Camisa"),
@@ -66,10 +68,14 @@ export class GuardarPedidoPage implements OnInit {
       contador++;
     });
     this.datos = true;
+    } else {
+      this.id = (new Date().getTime())+"";
+      this.esNuevo = true;
+    }
   }
 
-  async viewNote(auxId: string) {
-    console.log(auxId);
+  async viewNote() {
+    let auxId = this.id;
     const modal = await this.modalController.create({
       component: GuardarProductoComponent,
       componentProps: {
@@ -79,8 +85,14 @@ export class GuardarPedidoPage implements OnInit {
     return await modal.present();
   }
 
-  onSubmit(form: NgForm){
-
+  async guardarPedido(){
+    console.log("Guardado");
+    this.router.navigate(['/pedidos']);
   }
 
+  async eliminarPedido(){
+    console.log("Eliminado");
+    //this.pedidosService.eliminarProductos(this.id);
+    this.router.navigate(['/pedidos']);
+  }
 }
