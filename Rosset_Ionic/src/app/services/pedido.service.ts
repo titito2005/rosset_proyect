@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, getDocs, query, where, deleteDoc, addDoc } from "firebase/firestore";
+import { collection, getDocs, query, where, addDoc, updateDoc, deleteDoc, setDoc } from "firebase/firestore";
 import { writeBatch, doc, getDoc } from "firebase/firestore";
 import 'firebase/firestore';
 
@@ -63,7 +63,7 @@ export class PedidoService {
         direccion: doc.get("Direccion"),
         estado: doc.get("Estado"),
         fecha: doc.get("Fecha"),
-        telefono: doc.get("Teledono"),
+        telefono: doc.get("Telefono"),
         productos: doc.get("Productos"),
         vendedor: doc.get("Vendedor")
       }
@@ -112,26 +112,27 @@ export class PedidoService {
     }
   }
 
-  async eliminarProductos(id:string){
+  async eliminarProductos(pedido: Pedido){
     const db = getFirestore();
-    const q = query(collection(db, "Pedido"), where("id", "==", id));
-    const querySnapshot = await getDocs(q);
-    let idAuto;
-    querySnapshot.forEach((doc) => {
-      //idAuto = ${doc.id} => ${doc. data()};
-    });
-
-    await deleteDoc(doc(db, "Pedido", idAuto));
+    await deleteDoc(doc(db, "Pedido", pedido.id.toString()));
   }
 
   async actualizarPedido(pedido: Pedido){
-
+    const db = getFirestore();
+    await updateDoc(doc(db, "Pedido", pedido.id.toString()),{
+      Fecha: pedido.fecha,
+      Usuario: pedido.usuario,
+      Vendedor: pedido.vendedor,
+      Telefono: pedido.telefono,
+      Direccion: pedido.direccion
+    })
   }
 
-  async guardarPedido(pedido: Pedido){
+  async agregarPedido(pedido: Pedido){
     const db = getFirestore();
-    const docRef = await addDoc(collection(db, 'Pedido'), {
-      Id: pedido.id,
+    const id = new Date().getTime().toString();
+    await setDoc(doc(db, "Pedido", id),{
+      ID: Number(id),
       Direccion: pedido.direccion,
       Estado: pedido.estado,
       Fecha: pedido.fecha,

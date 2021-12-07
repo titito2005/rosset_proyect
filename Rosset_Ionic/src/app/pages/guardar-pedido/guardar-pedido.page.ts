@@ -42,6 +42,7 @@ export class GuardarPedidoPage implements OnInit {
       this.direccion = this.pedido.direccion;
       this.estado = this.pedido.estado;
       this.fecha = this.pedido.fecha;
+      this.telefono = this.pedido.telefono;
 
       const querySnapshot = await this.pedidosService.getProductosPorId(this.id);
       var contador = 0;
@@ -87,12 +88,38 @@ export class GuardarPedidoPage implements OnInit {
 
   async guardarPedido(){
     console.log("Guardado");
+    const pedido:Pedido = {
+      usuario: this.usuario,
+      fecha: this.fecha,
+      telefono: this.telefono,
+      estado: "Pendiente",
+      id: this.id,
+      direccion: this.direccion,
+      productos: "",
+      vendedor: "Kevin"
+    }
+    if (this.esNuevo == true) {
+      this.pedidosService.agregarPedido(pedido)
+    }else{
+      this.pedidosService.actualizarPedido(pedido)
+    }
+    
     this.router.navigate(['/pedidos']);
   }
 
   async eliminarPedido(){
     console.log("Eliminado");
-    //this.pedidosService.eliminarProductos(this.id);
+    const pedido:Pedido = {
+      usuario: "",
+      fecha: "",
+      telefono: "",
+      estado: "",
+      id: this.id,
+      direccion: "",
+      productos: "",
+      vendedor: ""
+    }
+    this.pedidosService.eliminarProductos(pedido);
     this.router.navigate(['/pedidos']);
   }
 }

@@ -8,13 +8,23 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Recargando...">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button >
       <ion-icon name="checkmark-circle-outline" ></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
       <ion-fab-button><ion-icon (click)="guardarPedido()" name="checkmark-circle-outline"></ion-icon></ion-fab-button>
-      <ion-fab-button><ion-icon (click)="eliminarPedido()" name="trash"></ion-icon></ion-fab-button>
+      <ion-fab-button *ngIf="esNuevo == false"><ion-icon (click)="eliminarPedido()" name="trash"></ion-icon></ion-fab-button>
     </ion-fab-list>
   </ion-fab>
 
@@ -32,12 +42,12 @@
 
     <ion-item lines="full">
       <ion-label position="floating">Telefono</ion-label>
-      <ion-input [(ngModel)]="telefono" type="text" ngModel name = "telefono">{{telefono}}</ion-input>
+      <ion-input [(ngModel)]="telefono" type="text" ngModel name = "telefono"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Direccion</ion-label>
-      <ion-input [(ngModel)]="direccion" type="text" ngModel name="direccion">{{direccion}}</ion-input>
+      <ion-input [(ngModel)]="direccion" type="text" ngModel name="direccion"></ion-input>
     </ion-item>
     <ion-grid>
       <ion-row>
